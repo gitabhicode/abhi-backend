@@ -15,9 +15,14 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
-// Test route
-app.get("/", (req, res) => {
-  res.send("Backend is running 🚀");
-});
+// routes import
+import userRouter from './routes/user.routes.js'
 
+// agar router alag le gye hian to hume app.get ki jagah app.use krna hota hai use middlewares
+// router declartation
+
+app.use("/api/v1/users", userRouter)
+
+// http://localhost:8000/api/v1/users/register
 export default app;
+ 
